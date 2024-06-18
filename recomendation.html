@@ -70,51 +70,55 @@
             </p>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-8 mx-auto text-white">
-            <form onsubmit="Mail(); reset(); return false;" class="row g-3">
-              <div class="form-group col-md-6">
-                <input
-                  type="text"
-                  id="name"
-                  class="form-control"
-                  autocomplete="off" required
-                  placeholder="Жанры"
-                />
-              </div>
-              <div class="form-group col-md-6">
-                <input
-                  type="email"
-                  id="email"
-                  class="form-control"
-                  autocomplete="off" required
-                  placeholder="Авторы"
-                />
-              </div>
-              <div class="form-group col-md-12">
-                <input
-                  type="text"
-                  id="title"
-                  class="form-control"
-                  autocomplete="off" required
-                  placeholder="Книги которые тебе нравятся"
-                />
-              </div>
-              <div class="form-group col-md-12">
-                <textarea
-                  id="reason"
-                  rows="4"
-                  class="form-control" required
-                  placeholder="Опиши своё настроение в течении для или расскажи что ты хочешь получить от книги."
-                ></textarea>
-              </div>
-              <div class="text-center">
-                <button class="btn btn-main" type="submit">Рекомендовать</button>
-              </div>
-            </form>
+        <form id="recommendation-form" class="row g-3">
+          <div class="form-group col-md-6">
+            <input
+              type="text"
+              id="genres"
+              class="form-control"
+              autocomplete="off" required
+              placeholder="Жанры"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <input
+              type="text"
+              id="authors"
+              class="form-control"
+              autocomplete="off" required
+              placeholder="Авторы"
+            />
+          </div>
+          <div class="form-group col-md-12">
+            <input
+              type="text"
+              id="likedBooks"
+              class="form-control"
+              autocomplete="off" required
+              placeholder="Книги которые тебе нравятся"
+            />
+          </div>
+          <div class="form-group col-md-12">
+            <textarea
+              id="description"
+              rows="4"
+              class="form-control" required
+              placeholder="Опиши своё настроение в течении дня или расскажи что ты хочешь получить от книги."
+            ></textarea>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-main" type="submit">Рекомендовать</button>
+          </div>
+        </form>
+        
+        <!-- Модальное окно для отображения рекомендации -->
+        <div id="recommendation-modal" class="modal">
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Рекомендация</h2>
+            <p id="recommendation-result"></p>
           </div>
         </div>
-      </div>
       
     </section>
     <!--Footer-->
