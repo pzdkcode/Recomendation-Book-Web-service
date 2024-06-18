@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>GoodBooks.</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <link rel="stylesheet" href="includes/style.css" />
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#navbar">
+    <!--Navbar-->
+    <nav
+      id="navbar"
+      class="navbar navbar-expand-lg navbar-light bg-white shadow fixed-top"
+      data-aos="fade-down"
+    >
+      <div class="container">
+        <a href="#" class="navbar-brand logo-text">Книжный советчик.</a>
+        <a
+          class="navbar-toggler"
+          type="a"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </a>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="/index.html" class="nav-link">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a href="/top3.html" class="nav-link">Лучшие книги</a>
+            </li>
+            <li class="nav-item">
+              <a href="/recomendation.html" class="nav-link">Получить рекомендацию</a>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Hero-->
+   
+    <section
+      id="contact"
+      class="bg-cover"
+      style="background-image: url(includes/images/bg.jpg)"
+    >
+      <div class="overlay"></div>
+      <div class="container text-white" data-aos="fade-up">
+        <div class="row">
+          <div class="col-12 section-intro text-center" data-aos="fade-up">
+            <h1>Получи рекомендацию уже сейчас.</h1>
+            <div class="divider"></div>
+            <p>
+              Максимально точно опиши, чего ты хочешь от прочитанной книги.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 mx-auto text-white">
+            <form onsubmit="Mail(); reset(); return false;" class="row g-3">
+              <div class="form-group col-md-6">
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  autocomplete="off" required
+                  placeholder="Жанры"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  autocomplete="off" required
+                  placeholder="Авторы"
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <input
+                  type="text"
+                  id="title"
+                  class="form-control"
+                  autocomplete="off" required
+                  placeholder="Книги которые тебе нравятся"
+                />
+              </div>
+              <div class="form-group col-md-12">
+                <textarea
+                  id="reason"
+                  rows="4"
+                  class="form-control" required
+                  placeholder="Опиши своё настроение в течении для или расскажи что ты хочешь получить от книги."
+                ></textarea>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-main" type="submit">Рекомендовать</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    <!--Footer-->
+    
+    <footer class="py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="mb-0">
+              Copyright @ 2022. Designed by Patrick Ail Bandola
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="includes/script.js"></script>
+</html>
