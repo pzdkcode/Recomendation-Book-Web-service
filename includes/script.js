@@ -1,3 +1,4 @@
+AOS.init();
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('recommendation-form');
   const modal = document.getElementById('recommendation-modal');
