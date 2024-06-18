@@ -1,11 +1,8 @@
 AOS.init();
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('recommendation-form');
-  const modal = document.getElementById('recommendation-modal');
-  const closeBtn = document.querySelector('.close-btn');
-  const recommendationResult = document.getElementById('recommendation-result');
 
-  form.addEventListener('submit', function (event) {
+  form.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     const genres = document.getElementById('genres').value;
@@ -13,35 +10,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const likedBooks = document.getElementById('likedBooks').value;
     const description = document.getElementById('description').value;
 
-    const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй 3 книги.`;
+    const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй мне три книги с небольшим описанием.`;
 
-    // Отправка данных на серверную функцию Vercel
-   fetch('/api/recomendation', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ prompt: prompt })
-})
-    .then(response => response.json())
-    .then(data => {
-      recommendationResult.textContent = data.choices[0].text.trim();
-      modal.style.display = 'block';
-    })
-    .catch(error => {
+    const url = 'https://chat-gpt26.p.rapidapi.com/';
+    const options = {
+      method: 'POST',
+      headers: {
+        'x-rapidapi-key': 'c20eba74b3mshb6fd8ccb74f6db2p1be6d0jsn3328268e517f', // Замени YOUR_RAPIDAPI_KEY на свой RapidAPI ключ
+        'x-rapidapi-host': 'chat-gpt26.p.rapidapi.com',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ]
+      })
+    };
+
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const result = await response.json();
+      const recommendation = result.choices[0].message.content.trim();
+      const newTabUrl = `rec.html?recommendation=${encodeURIComponent(recommendation)}`;
+      window.open(newTabUrl, '_blank');
+    } catch (error) {
       console.error('Error:', error);
-      recommendationResult.textContent = 'Произошла ошибка при получении рекомендации. Пожалуйста, попробуйте позже.';
-      modal.style.display = 'block';
-    });
-  });
-
-  closeBtn.addEventListener('click', function () {
-    modal.style.display = 'none';
-  });
-
-  window.addEventListener('click', function (event) {
-    if (event.target == modal) {
-      modal.style.display = 'none';
+      const errorMessage = 'Произошла ошибка при получении рекомендации. Пожалуйста, попробуйте позже.';
+      const newTabUrl = `rec.html?recommendation=${encodeURIComponent(errorMessage)}`;
+      window.open(newTabUrl, '_blank');
     }
   });
 });
