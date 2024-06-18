@@ -1,5 +1,3 @@
-AOS.init();
-
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('recommendation-form');
   const modal = document.getElementById('recommendation-modal');
@@ -14,19 +12,15 @@ document.addEventListener('DOMContentLoaded', function () {
     const likedBooks = document.getElementById('likedBooks').value;
     const description = document.getElementById('description').value;
 
-    const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй три книг.`;
+    const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй 3 книги.`;
 
-    // Отправка данных в OpenAI GPT-3
-    fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+    // Отправка данных на серверную функцию Vercel
+    fetch('/api/recommendation', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'sk-proj-XxF7k4ID1X9489TMZvZgT3BlbkFJX5AjG5arCRwlk463xBJR' // Замени YOUR_API_KEY на свой API ключ
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        prompt: prompt,
-        max_tokens: 150
-      })
+      body: JSON.stringify({ prompt: prompt })
     })
     .then(response => response.json())
     .then(data => {
