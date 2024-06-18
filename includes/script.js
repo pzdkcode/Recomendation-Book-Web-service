@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй 3 книги.`;
 
     // Отправка данных на серверную функцию Vercel
-   fetch('https:/recomendation-book-web-service-bs1b.vercel.app/api/recommendation.js', {
+   fetch('https:/recomendation-book-web-service-bs1b.vercel.app/api/recomendation', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
