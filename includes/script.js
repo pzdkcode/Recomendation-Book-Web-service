@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const prompt = `Жанры: ${genres}\nАвторы: ${authors}\nКниги которые нравятся: ${likedBooks}\nОписание: ${description}\nПожалуйста, порекомендуй 3 книги.`;
 
     // Отправка данных на серверную функцию Vercel
-    fetch('/api/recommendation.js', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ prompt: prompt })
-    })
+   fetch('https:/recomendation-book-web-service-bs1b.vercel.app/api/recommendation', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ prompt: prompt })
+})
     .then(response => response.json())
     .then(data => {
       recommendationResult.textContent = data.choices[0].text.trim();
