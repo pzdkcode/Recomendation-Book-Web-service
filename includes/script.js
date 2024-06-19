@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const options = {
         method: 'POST',
         headers: {
-          'x-rapidapi-key': 'bed7777133mshe32a1c0317314e2p1b9ad6jsnf073a2c762c8', // Замени YOUR_RAPIDAPI_KEY на свой RapidAPI ключ
+          'x-rapidapi-key': 'ad96ba286emsh22c7e637115bff8p14ff40jsn69c783b728eb', // Замени YOUR_RAPIDAPI_KEY на свой RapidAPI ключ
           'x-rapidapi-host': 'chat-gpt26.p.rapidapi.com',
           'Content-Type': 'application/json'
         },
